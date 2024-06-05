@@ -1,5 +1,7 @@
 ## GoBananas Frontend Developer Assignment
 
+# Assignment Completed - https://gobananas-assignment-ten.vercel.app/
+
 # Task Description:
 Build a Simple React Application with API Integration and Material-UI.
 You must build a single-page application that fetches data from a public API and displays it in a user-friendly format. The application should include:
