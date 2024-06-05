@@ -1,6 +1,6 @@
 "use client";
 
-import { ImagesContext, ImagesTypes } from "@/context/ImageContextProvider";
+import { ImagesContext } from "@/context/ImageContextProvider";
 import { fetchImagesApi } from "@/utils/request";
 import { useContext, useState } from "react";
 
@@ -15,7 +15,7 @@ const GetImages = () => {
 
   const handleGetImages = async () => {
     try {
-      const res = await fetchImagesApi()
+      const res = await fetchImagesApi({})
     //   console.log(res)
       setImages(res)
     } catch (error) {

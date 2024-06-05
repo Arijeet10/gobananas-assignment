@@ -3,22 +3,32 @@
 import { ImagesContext } from "@/context/ImageContextProvider";
 import { fetchImagesApi } from "@/utils/request";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { IoSearch } from "react-icons/io5";
+
 
 const Header = () => {
-  const { images, setImages } = useContext(ImagesContext);
-  const [pageNo,setPageNo]=useState(1)
 
-  const handleNextImages = async() => {
-    setPageNo(prev=>prev+1)
+
+  const { setImages } = useContext(ImagesContext);
+  const [searchInput,setSearchInput]=useState("");
+
+  const handleSearch = async() => {
+    const searchQuery=searchInput
     try {
-        console.log("PageNO",pageNo+1)
-        const res=await fetchImagesApi(pageNo+1)
-        setImages(res)
+      const res=await fetchImagesApi({searchQuery})
+      setImages(res)
     } catch (error) {
         console.log(error)
     }
   };
+
+  useEffect(() => {
+    if(searchInput){
+      handleSearch()
+    }
+  }, [searchInput])
+  
 
   return (
     <>
@@ -34,29 +44,21 @@ const Header = () => {
           >
             Home
           </Link>
-          {images.length > 0 && (
-            <>
-              <button
-                onClick={() => handleNextImages()}
-                className="px-2 py-2 rounded-md font-medium bg-indigo-500 text-[#ffffff] hover:bg-indigo-700"
-              >
-                Next Images
-              </button>
-              <button
-                onClick={() => {
-                  setImages([]);
-                  console.log(images);
-                  setPageNo(1);
-                }}
-                className="px-2 py-2 rounded-md font-medium bg-[#C04000] text-[#ffffff] hover:bg-[#B00000]"
-              >
-                Remove Images
-              </button>
-            </>
-          )}
         </nav>
+        <div>
+          <div className="p-2 border flex items-center">
+            <input 
+              type="text"
+              placeholder="search images"
+              className="w-full focus:outline-none bg-transparent"
+              value={searchInput}
+              onChange={(e)=>setSearchInput(e.target.value)}
+            />
+            <IoSearch className="" />
+          </div>
+        </div>
         {/* Mobile */}
-        {images.length > 0 && (
+        {/* {images.length > 0 && (
           <div className="block sm:hidden">
             <button
               onClick={() => setImages([])}
@@ -65,7 +67,7 @@ const Header = () => {
               Remove Images
             </button>
           </div>
-        )}
+        )} */}
       </header>
     </>
   );

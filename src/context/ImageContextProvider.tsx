@@ -1,14 +1,9 @@
 "use client";
 
+import { ImagesTypes } from "@/types/types";
 import { ReactNode, SetStateAction, createContext, useState } from "react";
 
-export interface ImagesTypes{
-    albumId: number;
-    id: number;
-    title:string;
-    url: string;
-    thumbnailUrl: string;
-}
+
 
 interface ImagesContextProps{
     images:ImagesTypes[];
