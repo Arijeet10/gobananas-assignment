@@ -13,7 +13,7 @@ export const fetchImagesApi = async ({pageNo=1,searchQuery=""}:{pageNo?: number,
       const filteredImagesList = response.filter((item: ImagesTypes, i: number) => {
         if (pageNo <= 1 && i < pageNo * 10) {
           return item;
-        } else if (i > (pageNo - 1) * 10 && i < pageNo * 10) {
+        } else if (i >= (pageNo - 1) * 10 && i < pageNo * 10) {
           return item;
         }
       });
