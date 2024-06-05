@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="px-2 py-2  bg-[#1f1f1f] text-[#e5e5e5] flex items-center justify-between">
+      <header className="px-2 py-2  bg-[#1f1f1f] text-[#e5e5e5] flex items-center justify-between gap-2 sm:gap-0">
         <div className="text-2xl sm:text-lg md:text-xl lg:text-2xl font-bold">
           RandomImages
         </div>
