@@ -1,6 +1,6 @@
 ## GoBananas Frontend Developer Assignment
 
-# Assignment Completed - https://gobananas-assignment-ten.vercel.app/
+# Assignment Live Demo - https://gobananas-assignment-ten.vercel.app/
 
 # Task Description:
 Build a Simple React Application with API Integration and Material-UI.
