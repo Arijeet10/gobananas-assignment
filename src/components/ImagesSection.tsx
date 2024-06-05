@@ -12,7 +12,7 @@ const ImagesSection = () => {
 
   const fetchImages = async () => {
     try {
-      const pageNo=page + 1
+      const pageNo = page + 1;
       console.log("PageNO", pageNo);
       const res = await fetchImagesApi({ pageNo });
       setImages(res);
@@ -41,12 +41,14 @@ const ImagesSection = () => {
                 return <ImageCard key={i} image={item} />;
               })}
             </div>
-            <div className="py-4 flex items-center justify-end gap-2">
+            <div className="py-4 flex flex-col sm:flex-row items-center  gap-2">
+              <div className="w-full text-center sm:text-end font-bold">Page {page == 0 ? 1 : page + 1}</div>
+              <div className="w-full flex items-center justify-end gap-2">
               <button
                 onClick={() => setPage((prev) => prev + 1)}
                 className="px-2 py-2 rounded-md font-medium bg-indigo-500 text-[#ffffff] hover:bg-indigo-700"
               >
-                Next Images
+                Next Page
               </button>
               <button
                 onClick={() => {
@@ -58,6 +60,8 @@ const ImagesSection = () => {
               >
                 Remove Images
               </button>
+              </div>
+
             </div>
           </div>
         ) : (
