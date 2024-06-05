@@ -21,6 +21,9 @@ const Header = () => {
     }
   };
 
+
+  
+
   useEffect(() => {
     if (searchInput) {
       handleSearch();
@@ -50,7 +53,7 @@ const Header = () => {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
             />
-            {searchInput ? <IoClose className="" /> : <IoSearch className="" />}
+            {searchInput ? <IoClose onClick={()=>setSearchInput("")} className="" /> : <IoSearch className="" />}
           </div>
         </div>
       </header>
